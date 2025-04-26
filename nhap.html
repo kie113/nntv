@@ -70,16 +70,63 @@
       }
     }
 
-    /* Responsive tweak: nếu màn nhỏ hơn 400px thì giảm khoảng cách */
-    @media (max-width: 400px) {
+    /* Responsive tweak: giảm khoảng cách giữa các ô khi màn hình nhỏ */
+    @media (max-width: 600px) {
       h1 {
         font-size: 6vw;
-        margin-bottom: 10vh;
+        margin-bottom: 8vh;
       }
 
       .heart-grid {
         gap: 2.5vw;
         margin-top: -4vh;
+      }
+
+      .heart-grid img {
+        object-position: center center;
+      }
+    }
+
+    /* Thêm hiệu ứng bay lên cho trái tim */
+    .heart {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: rgba(255, 105, 180, 0.6); /* Hồng nhẹ */
+      transform: rotate(45deg);
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: rgba(255, 105, 180, 0.6);
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -6px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -6px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(45deg) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg) scale(1.5);
+        opacity: 0;
       }
     }
   </style>
@@ -119,5 +166,30 @@
     <img />
     <img />
   </div>
+
+  <script>
+    // Tạo hiệu ứng trái tim bay lên
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+
+      // Vị trí ngẫu nhiên trên màn hình
+      let leftPos;
+      const side = Math.random();
+      if (side < 0.5) {
+        leftPos = Math.random() * 35; // 0vw - 35vw
+      } else {
+        leftPos = 65 + Math.random() * 35; // 65vw - 100vw
+      }
+
+      heart.style.left = `${leftPos}vw`;
+      heart.style.animationDuration = (Math.random() * 2 + 4) + "s";
+      document.body.appendChild(heart);
+
+      // Xóa trái tim sau khi bay xong
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 400);
+  </script>
 </body>
 </html>
