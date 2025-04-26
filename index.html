@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xin lỗi vợ yêu 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    main {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 6vw;
+      color: #e60073;
+      margin-bottom: 110px;
+    }
+
+
+  h2 {
+  font-size: 2.5vw;
+  color: #cc0066;
+  margin-top: -70px;
+  margin-bottom: 100px;
+  font-weight: 500;
+  max-width: 90vw;
+  line-height: 1.4;
+  background: #fff0f5;
+  padding: 20px 30px;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+}
+
+
+    .btn-container {
+      display: inline-block;
+      margin: 50px;
+      position: relative;
+    }
+
+    button {
+      padding: 40px 100px;
+      font-size: 30px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yes-btn {
+      background-color: #ff66b2;
+      color: white;
+    }
+
+    #yes-btn:hover {
+      background-color: #ff3385;
+    }
+
+    #no {
+      z-index: 10;
+      position: absolute;
+      transition: all 0.3s ease;
+    }
+
+    #no-btn {
+      background-color: #cccccc;
+      color: #333;
+      position: absolute;
+      transition: transform 0.5s ease;
+    }
+
+    #no-btn:hover {
+      background-color: #ff3385;
+    }
+
+
+    @media (max-width: 600px) {
+  h1 {
+    font-size: 8vw;
+    margin-bottom: 60px;
+  }
+
+  h2 {
+    font-size: 4vw;
+    margin-top: -40px;
+    margin-bottom: 60px;
+    padding: 15px 20px;
+  }
+
+  button {
+    padding: 20px 40px;
+    font-size: 18px;
+    width: 90vw;
+    max-width: 300px;
+  }
+
+  .btn-container {
+    margin: 15px;
+  }
+}
+
+
+    .heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: pink;
+  transform: rotate(45deg);
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: pink;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Gửi con vợ Tường Vy💖</h1>
+    <h2>Anh có món quà nho nhỏ này tặng vợ mong rằng vợ tha lỗi cho anh</h2>
+    <div id="yes" class="btn-container">
+      <button type="button" id="yes-btn">Em đồng ý tha cho anh💖</button>
+    </div>
+    <div id="no" class="btn-container">
+      <button type="button" id="no-btn">Có cái lồn chứ tha🦪</button>
+    </div>
+  </main>
+
+  <script>
+    const noContainer = document.getElementById("no");
+    const noButton = document.getElementById("no-btn");
+
+    // Hover để tránh né (giữ nguyên)
+    noContainer.addEventListener('mouseover', () => {
+      const x = Math.floor(Math.random() * (window.innerWidth - 200));
+      const y = Math.floor(Math.random() * (window.innerHeight - 100));
+      noContainer.style.left = `${x}px`;
+      noContainer.style.top = `${y}px`;
+    });
+
+    // Click để làm nhỏ dần và xuất hiện lại ở chỗ khác
+    noButton.addEventListener('click', () => {
+      // Thu nhỏ nút
+      noButton.style.transform = "scale(0)";
+
+      // Sau 0.5s thì đổi vị trí và làm nó hiện lại
+      setTimeout(() => {
+        const x = Math.floor(Math.random() * (window.innerWidth - 200));
+        const y = Math.floor(Math.random() * (window.innerHeight - 100));
+        noContainer.style.left = `${x}px`;
+        noContainer.style.top = `${y}px`;
+
+        // Hiện lại nút (sau khi chuyển chỗ)
+        setTimeout(() => {
+          noButton.style.transform = "scale(1)";
+        }, 100);
+      }, 500);
+    });
+
+    const yesBtn = document.getElementById("yes-btn");
+      yesBtn.addEventListener('click', () => {
+        window.location.href = "nhap.html";
+    });
+  </script>
+
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+  
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  
+      document.body.appendChild(heart);
+  
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+  
+    setInterval(createHeart, 500);
+  </script>  
+</body>
+</html>

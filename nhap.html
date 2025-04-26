@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cảm ơn vợ yêu 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffe6f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 5vw;
+      color: #e60073;
+      margin-bottom: 12vh;
+      z-index: 2;
+      animation: pulse-text 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-text {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    .heart-grid {
+      position: relative;
+      width: 90vw;
+      max-width: 500px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 3vw;
+      margin-top: -6vh;
+      aspect-ratio: 1 / 1;
+    }
+
+    .heart-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10%;
+      animation: pulse 3s infinite ease-in-out;
+      box-shadow: 0 0 10px 2px rgba(230, 0, 115, 0.7);
+    }
+
+    .heart-grid img:not(.show) {
+      visibility: hidden;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    /* Responsive tweak: nếu màn nhỏ hơn 400px thì giảm khoảng cách */
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 6vw;
+        margin-bottom: 10vh;
+      }
+
+      .heart-grid {
+        gap: 2.5vw;
+        margin-top: -4vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Cảm ơn vợ đã tha lỗi cho anh 💖</h1>
+
+  <div class="heart-grid">
+    <!-- 25 ô, chỉ show các ô tạo hình trái tim -->
+    <img src="p1.jpg" class="show"/>
+    <img src="p2.jpg" class="show"/>
+    <img />
+    <img src="p3.jpg" class="show"/>
+    <img src="p4.jpg" class="show"/>
+
+    <img src="p5.jpg" class="show"/>
+    <img src="p6.jpg" class="show"/>
+    <img src="p7.jpg" class="show"/>
+    <img src="p8.jpg" class="show"/>
+    <img src="p9.jpg" class="show"/>
+
+    <img src="p10.jpg" class="show"/>
+    <img src="p11.jpg" class="show"/>
+    <img src="p12.jpg" class="show"/>
+    <img src="p13.jpg" class="show"/>
+    <img src="p14.jpg" class="show"/>
+
+    <img />
+    <img src="15.jpg" class="show"/>
+    <img src="16.jpg" class="show"/>
+    <img src="17.jpg" class="show"/>
+    <img />
+
+    <img />
+    <img />
+    <img src="p18.jpg" class="show"/>
+    <img />
+    <img />
+  </div>
+</body>
+</html>
